@@ -23,7 +23,7 @@ def deleteRAW(jpg_path: str):
         filename = os.fsdecode(file)
         raw_name, ext = os.path.splitext(filename)
 
-        if raw_name not in jpg_array and ext == ".ARW":
+        if raw_name not in jpg_array and (ext == ".ARW" or ext == ".DNG"):
             deleted.append(filename)
             send2trash(os.path.join(raw_path, filename))
 
@@ -31,7 +31,8 @@ def deleteRAW(jpg_path: str):
 
 
 if __name__ == '__main__':
-    path = '/Users/Shared/OneDrive/Obrázky/01 Foto/2022-11-01 Mexico/2022-11-02 Isla Mujeres/Foto'
+    path = '/Users/Shared/OneDrive/Obrázky/01 Foto/2022-11-19 Nicaragua/2022-11-27-Ometepe/Foto'
+    # path = '/Users/Shared/OneDrive/Obrázky/01 Foto/2022-10-19 Staromestka mostecka vez/'
     deleted_photos, num = deleteRAW(path)
     print(f'Number of deleted photos: {num}')
     print(f'Deleted photos: {deleted_photos}')
